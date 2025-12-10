@@ -1,0 +1,118 @@
+# ======================================================
+# GLOBAL NODE / JS
+# ======================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+*.log
+
+# Env files (root-level)
+.env
+.env.*
+!.env.example
+
+# Build directories (common)
+dist/
+build/
+out/
+.tmp/
+temp/
+
+# ======================================================
+# BACKEND (Express)
+# ======================================================
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/.env
+backend/.env.*
+backend/*.log
+
+# PID files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ======================================================
+# ADMIN (Vite)
+# ======================================================
+admin/node_modules/
+admin/dist/
+admin/.env
+admin/.env.*
+
+# Vite cache
+.vite/
+vite.config.timestamp-*
+
+# ======================================================
+# MOBILE (React Native Expo)
+# ======================================================
+mobile/node_modules/
+mobile/.expo/
+mobile/.expo-shared/
+mobile/.expo/*
+mobile/.env
+mobile/.env.*
+
+# Metro bundler cache
+.expo/
+.expo-shared/
+.expo-shared/assets.json
+
+# React Native build artifacts
+android/
+ios/
+*.keystore
+*.jks
+*.p8
+*.p12
+*.mobileprovision
+
+# Xcode
+**/*.xcworkspace
+**/*.xcodeproj
+**/xcuserdata/
+**/xcshareddata/
+**/build/
+
+# Gradle
+*.gradle
+.gradle/
+
+# Watchman
+.watchmanconfig
+
+# ======================================================
+# OS FILES
+# ======================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ======================================================
+# EDITOR / IDE
+# ======================================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains IDE
+.idea/
+
+# ======================================================
+# OPTIONAL: uploads / storage
+# ======================================================
+uploads/
+public/uploads/
