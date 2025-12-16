@@ -8,14 +8,18 @@ import { functions, inngest } from "./configs/inngest.js";
 import { ENV } from "./configs/env.js";
 import { connectDB } from "./configs/db.js";
 
+import adminRoutes from "./routes/admin.route.js";
+
 const app = express();
 
 const __dirname = path.resolve();
 
 app.use(express.json());
-app.use(clerkMiddleware());
+app.use(clerkMiddleware()); // adds auth object under the req => req.auth
 
 app.use("/api/inngest", serve({ client: inngest, functions }));
+
+app.use("/api/admin", adminRoutes);
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({ message: "Success" });
