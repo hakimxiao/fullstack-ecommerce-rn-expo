@@ -15,6 +15,17 @@ export async function addAddress(req, res) {
 
     const user = req.user;
 
+    if (
+      !fullName ||
+      !streetAddress ||
+      !city ||
+      !state ||
+      !zipCode ||
+      !phoneNumber
+    ) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
     // if this is set as default, unset all other default
     if (isDefault) {
       user.addresses.forEach((addr) => {
@@ -127,18 +138,18 @@ export async function addToWishlist(req, res) {
     const user = req.user;
 
     // check if product is already in wishlist
-    if (user.whishlist.includes(productId)) {
+    if (user.wishlist.includes(productId)) {
       return res
         .status(400)
         .json({ message: "Product is already in wishlist" });
     }
 
-    user.whishlist.push(productId);
+    user.wishlist.push(productId);
     await user.save();
 
     res
       .status(200)
-      .json({ message: "Product added to wishlist", wishlist: user.whishlist });
+      .json({ message: "Product added to wishlist", wishlist: user.wishlist });
   } catch (error) {
     console.error("Error addToWishlist controller:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -151,18 +162,18 @@ export async function removeFromWishlist(req, res) {
     const user = req.user;
 
     // check if product is in wishlist
-    if (!user.whishlist.includes(productId)) {
+    if (!user.wishlist.includes(productId)) {
       return res
         .status(400)
-        .json({ message: "Product is not event in wishlist" });
+        .json({ message: "Product is not even in wishlist" });
     }
 
-    user.whishlist.pull(productId);
+    user.wishlist.pull(productId);
     await user.save();
 
     res.status(200).json({
       message: "Product removed from wishlist",
-      wishlist: user.whishlist,
+      wishlist: user.wishlist,
     });
   } catch (error) {
     console.error("Error removeFromWishlist controller:", error);
@@ -171,9 +182,10 @@ export async function removeFromWishlist(req, res) {
 }
 export async function getWishlist(req, res) {
   try {
-    const user = req.user;
+    // we're using populate because wishlist is an array of product ids
+    const user = await User.findById(req.user._id).populate("wishlist");
 
-    res.status(200).json({ wishlist: user.whishlist });
+    res.status(200).json({ wishlist: user.wishlist });
   } catch (error) {
     console.error("Error getWishlist controller:", error);
     res.status(500).json({ message: "Internal server error" });
