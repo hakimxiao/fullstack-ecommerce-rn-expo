@@ -10,6 +10,6 @@ const router = Router();
 router.post("/", protectRoutes, createReview);
 // we did not implement this function in the mobile app - in the frontend
 // but just in case if you'd like to see the backend code here it is- i provided
-router.delete("/:id", protectRoutes, deleteReview);
+router.delete("/:reviewId", protectRoutes, deleteReview);
 
 export default router;
