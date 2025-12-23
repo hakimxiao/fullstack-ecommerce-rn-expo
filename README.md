@@ -9,3 +9,20 @@ https://fullstack-ecommerce-rn-expo-production.up.railway.app/api/health
 
 ADMIN DEPLOY BY VERCEL :
 https://fullstack-ecommerce-rn-expo.vercel.app/
+
+QUERY :
+pakai tanstack query
+
+- ini bagus karena dengan tanstack kita dapat mempersingkat pembuatan state dimana cukup menggunakan hook tanstcak maka secara otomatis semua
+  value yang dibutuhkan untuk membuat set sudah ada seperti error dan lainnya
+
+CSS :
+tailwindcss
+
+UI :
+daisy ui
+TIPS! : - Daisy UI menyediakan banyak sekali tema dan jika kalian ingin merubah tema default caranya dengan menambahkan object pada setup
+plugin di css kalian yaitu plugin disyui contoh :
+@plugin "daisyui" {
+themes: forest;
+} - Kemudian di HTML utama project silahkan di buat <html lang="en" data-theme="forest"> sesuai dengan yang kalian setup - dokumenbtasi : https://daisyui.com/docs/themes/
