@@ -32,7 +32,7 @@ const DashboardPage = () => {
       name: "Total Revenue",
       value: statsLoading
         ? "..."
-        : `Rp.${statsData.totalRevenue.toFixed(2) || 0}`,
+        : `Rp.${statsData?.totalRevenue?.toFixed(2) || 0}`,
       icon: <CoinsIcon className="size-8" />,
     },
     {
