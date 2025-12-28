@@ -74,12 +74,12 @@ export async function updateProduct(req, res) {
     if (category) product.category = category;
 
     // handle image update if new images are uploaded
-    if (req.file && req.file.length > 0) {
-      if (req.file.length > 3) {
+    if (req.files && req.files.length > 0) {
+      if (req.files.length > 3) {
         return res.status(400).json({ message: "Maximum 3 image allowed" });
       }
 
-      const uploadPromises = req.file.map((file) => {
+      const uploadPromises = req.files.map((file) => {
         return cloudinary.uploader.upload(file.path, {
           folder: "products",
         });
@@ -87,10 +87,9 @@ export async function updateProduct(req, res) {
 
       const uploadResults = await Promise.all(uploadPromises);
       product.images = uploadResults.map((result) => result.secure_url);
-
-      await product.save();
-      res.status(200).json(product);
     }
+    await product.save();
+    res.status(200).json(product);
   } catch (error) {
     console.error("Error updating product", error);
     res.status(500).json({ message: "Internal server error" });
