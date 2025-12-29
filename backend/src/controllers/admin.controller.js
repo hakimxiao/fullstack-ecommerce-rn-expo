@@ -183,3 +183,32 @@ export async function getDashboardStats(_, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const product = await Product.findById(id);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // delete images from cloudinary
+    if (product.images && product.images.length > 0) {
+      const deletePromises = product.images.map((imageUrl) => {
+        // extract public_id from URL (assume format: ../products/publicId.ext)
+        const publicId =
+          "products/" + imageUrl.split("/products/")[1]?.split(".")[0];
+        if (publicId) return cloudinary.uploader.destroy(publicId);
+      });
+
+      await Promise.all(deletePromises.filter(Boolean));
+    }
+
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({ message: "Product deleted" });
+  } catch (error) {
+    console.log("Error delete product", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
