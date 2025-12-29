@@ -11,17 +11,17 @@ export async function createProduct(req, res) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    if (!req.file || req.file.length === 0) {
+    if (!req.files || req.files.length === 0) {
       return res
         .status(400)
         .json({ message: "Please upload at least one image" });
     }
 
-    if (req.file.length > 3) {
+    if (req.files.length > 3) {
       return res.status.json({ message: "Maximum 3 image allowed" });
     }
 
-    const uploadPromise = req.file.map((file) => {
+    const uploadPromise = req.files.map((file) => {
       return cloudinary.uploader.upload(file.path, {
         folder: "products",
       });
