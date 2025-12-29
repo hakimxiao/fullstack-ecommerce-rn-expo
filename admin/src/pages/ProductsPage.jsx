@@ -90,6 +90,11 @@ const ProductsPage = () => {
     const files = Array.from(e.target.files);
     if (files.length > 3) return alert("Maximum 3 images allowed");
 
+    // revoke the URL for the old images
+    imagePreviews.forEach((url) => {
+      if (url.startWith("blob:")) URL.revokeObjectURL(url);
+    });
+
     setImages(files);
     setImagePreviews(files.map((file) => URL.createObjectURL(file)));
   };
@@ -331,7 +336,7 @@ const ProductsPage = () => {
                 <span>Description</span>
               </label>
               <textarea
-                className="textarea textare-bordered h-24 w-full"
+                className="textarea textarea-bordered h-24 w-full"
                 placeholder="Enter a product description"
                 value={formData.description}
                 onChange={(e) =>
