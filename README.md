@@ -26,3 +26,8 @@ plugin di css kalian yaitu plugin disyui contoh :
 @plugin "daisyui" {
 themes: forest;
 } - Kemudian di HTML utama project silahkan di buat <html lang="en" data-theme="forest"> sesuai dengan yang kalian setup - dokumenbtasi : https://daisyui.com/docs/themes/
+
+npx expo prebuild digunakan untuk membuild aplikasi
+kemudian npx expo run:android untuk membuild app nya
+
+ERROR RUN ANDROID

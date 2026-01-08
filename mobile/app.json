@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mobile",
+    "name": "expo-ecommerce",
     "slug": "mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -45,8 +45,8 @@
         "@sentry/react-native/expo",
         {
           "url": "https://sentry.io/",
-          "project": "ecommerce-tut",
-          "organization": "codesistency-gs"
+          "project": "expo-ecommerce-rn",
+          "organization": "psjshkm"
         }
       ]
     ],

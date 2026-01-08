@@ -5,7 +5,9 @@ import { getProductById } from "../controllers/product.controller.js";
 
 const router = Router();
 
-router.get("/", protectRoutes, getAllProducts);
+router.get("/", getAllProducts);
 router.get("/:id", protectRoutes, getProductById);
 
 export default router;
+
+// MIDDLEWARE SY MATIKAN UNTUK MASLAH IPCONFIg
