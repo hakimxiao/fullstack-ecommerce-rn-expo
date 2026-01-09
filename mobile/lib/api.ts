@@ -2,7 +2,7 @@ import { useAuth } from "@clerk/clerk-expo";
 import axios from "axios";
 import { useEffect } from "react";
 
-const API_URL = "http://192.168.16.50:3000/api";
+const API_URL = "http://192.168.147.50:3000/api";
 
 const api = axios.create({
   baseURL: API_URL,

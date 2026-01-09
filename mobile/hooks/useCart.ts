@@ -21,7 +21,7 @@ const useCart = () => {
       });
       return data.cart;
     },
-    onSuccess: () => queryClient.cancelQueries({ queryKey: ["cart"] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["cart"] }),
   });
 
   return {

@@ -15,6 +15,7 @@ import useProducts from "@/hooks/useProducts";
 
 import * as Sentry from "@sentry/react-native";
 
+// TODO: in the payment section use seentry logs to track payment errors - workflow
 const CATEGORIES = [
   { name: "All", icon: "grid-outline" as const },
   { name: "Electronics", images: require("@/assets/images/electronics.png") },
