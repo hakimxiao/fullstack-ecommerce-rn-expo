@@ -30,4 +30,10 @@ themes: forest;
 npx expo prebuild digunakan untuk membuild aplikasi
 kemudian npx expo run:android untuk membuild app nya
 
-ERROR RUN ANDROID
+npx expo run:android → install dev client
+
+npx expo start → server realtime
+
+Dev client connect sendiri, bukan dipanggil terminal
+
+Terminal tidak tahu app sudah terbuka manual.
