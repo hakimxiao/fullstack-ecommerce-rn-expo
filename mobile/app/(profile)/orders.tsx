@@ -1,7 +1,9 @@
-import { View } from "react-native";
-
+import { Text, View } from "react-native";
 const OrdersScreen = () => {
-  return <View>OrdersScreen</View>;
+  return (
+    <View>
+      <Text>OrdersScreen</Text>
+    </View>
+  );
 };
-
 export default OrdersScreen;
